@@ -1,0 +1,590 @@
+# Write a program to check weather a number is positive, negative or zero
+
+
+
+# def check(number)
+    
+#     if number > 0
+#         puts "positive"
+        
+#     elsif number == 0
+#         puts "zero"
+        
+#     else 
+#     puts "negative"
+# end
+# end
+
+# check(000000)
+
+
+
+# Write a program to reverse a number
+
+
+# def reverse(number)
+#     sum = 0
+#      while number != 0
+         
+#          r = number%10
+    
+#          sum = (sum * 10 + r)
+    
+#          number = number /10         
+#      end
+     
+#      puts sum
+# end
+
+
+# reverse(123)
+
+
+# Write a program to check weather a string is palindrome
+
+
+# def Palindrom(stringvalue)
+    
+#     i = 0 
+#     j = stringvalue.length-1
+    
+#     while i <= j
+        
+#         if(stringvalue[i] != stringvalue[j])
+#             puts false
+#             return
+#         end
+
+#         i += 1
+#         j -= 1        
+        
+#     end
+    
+#     puts true
+# end
+
+# Palindrom("AABBAA")
+# Palindrom("AAfgsfdse")
+
+
+
+# Write a program for calculator having functionality like addition, subtraction, multiplication,
+# division showing remainder and quotient  
+
+# class Calculator
+    
+#     def additions(value1 , value2)
+#         return value1 + value2
+#     end
+        
+#     def subtractions(value1 , value2)
+#         return value1 - value2
+#     end
+        
+#     def multiplications(value1 , value2)
+#         return value1 * value2
+#     end
+    
+#     def divisions(value1 , value2)
+#         y = value1 / value2
+#         x = value1 % value2
+        
+#         return "division quotient include #{y} , division remainder include #{x}"
+#     end
+    
+# end
+
+# calci = Calculator.new()
+
+# puts calci.additions(30 , 10)
+# puts calci.subtractions(30 , 10)
+# puts calci.multiplications(30 , 10)
+# puts calci.divisions(30 , 10)
+
+
+
+#  Write a program for table from 2 to 10
+
+# for i in 2..10
+    
+#     for j in 1..10
+#         puts ("#{i} * #{j} = #{i*j}")
+#     end
+    
+# end
+
+
+# Write a program to find minimum and maximum between two number
+
+# def MINMAX(value1 , value2)
+    
+#     if value1 > value2
+#         return "value1 i.e #{value1} is maximum"
+        
+#     elsif value2 > value1
+#         return "value2 i.e #{value2} is maximum"
+#     end
+    
+# end
+
+
+# puts MINMAX(207 , 33)
+
+
+#  Write a program to find square root of a number given by user
+
+
+# number = 100
+
+# sqrtno = Math.sqrt(number)
+
+# puts sqrtno
+
+
+# Write a program to find square and cube of a number given by a user
+
+
+# class Operations
+    
+#     def initialize(number)
+#         @number = number                 # for instance variable we always use @sign
+#     end
+    
+#     def square
+#         return @number*@number
+#     end
+    
+#     def cube
+#         return @number**3
+#     end
+
+# end
+
+# # values = operations(8)
+
+# operationsValues = Operations.new(8)
+
+# puts operationsValues.square
+# puts operationsValues.cube
+
+
+
+# Write a program to find minimum and maximum in an array
+
+
+# arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# small = arr[0]
+# big = arr[0]
+
+# arr.each do |numbers|
+    
+#     if small > numbers
+#         small = numbers
+#         elsif big < numbers
+#             big = numbers
+#         end
+#     end
+        
+# puts small , big
+        
+        
+# Write a program to find even and odd number in an array
+
+# def calculate(number)
+    
+#     if number %2 == 0
+#         return "even"
+#     else return "odd"
+#     end
+# end
+
+# puts calculate(3)
+        
+  
+# Write a program to find even numbers between 1 to 100
+
+#   for i in 1..100
+      
+#       if i %2 == 0
+
+#       puts i
+#   end
+
+# end        
+        
+
+#   Write a program to find odd numbers between 1 to 100
+
+#   for i in 1..100
+      
+#       if i %2 != 0
+
+#       puts i
+#   end
+
+# end      
+
+
+
+# Write a program to find factorial of a number enter by user
+
+
+# def Factorial(number)
+    
+#     x = 1
+#     while number != 0
+        
+#         x = x * number
+#         number = number-1
+#     end
+
+# puts x
+
+# end
+
+
+# Factorial(13)
+
+
+# Write a program to find sum of digits of a number
+
+
+# sum = 0
+# for i in 1..120
+    
+#     sum = sum + i
+    
+# end
+
+# puts sum
+
+
+
+# Write a program to find a number is prime or not given by user
+
+# def CheckPrime(number)
+    
+#     for i in 2..number/2
+
+#       if number % i == 0
+        
+#         return "not a prime no."
+        
+#     end
+# end
+
+# return "Its a prime no."
+
+# end
+
+# puts CheckPrime(65)
+
+
+
+# Write a program to reverse a string given by user
+
+# def reversee(stringvalue)
+    
+#     x = 0
+#     y = stringvalue.length-1        # remember always initiallize values on a diffenent different lines not in one lines
+    
+#     while x <= y
+        
+#         temp = stringvalue[x]
+#         stringvalue[x] = stringvalue[y]
+#         stringvalue[y] = temp
+        
+#         x = x+1
+#         y = y-1
+#     end
+    
+    
+#     puts stringvalue
+
+# end
+
+# reversee("chirag")
+
+
+# Write a program to remove spaces from a string given by user
+
+
+# def RemoveSpaces( stringValues )
+    
+#     astr = ""
+    
+#     stringValues.each_char do |char|                     # for accessing particular character we use .each_char
+         
+#         if char == " "
+#             next
+#         elsif astr = astr + char
+            
+#         end
+# end 
+
+# puts astr
+# end
+
+# RemoveSpaces("Removc eSpaces djaslhlajoahe")
+
+
+
+
+# Write a program to print pyramid using *
+# Note print doesn't go to next line after printing puts 
+# goes to next line after printing only puts act's as cout<<endl;
+
+# 5.downto(i)  this line countss in descending order from 5 to i 
+
+# for i in 1..5
+    
+#     for j in 5.downto(i)
+        
+#         print " "
+#     end
+
+#     for k in 1..(2*i-1)
+        
+#         print "*"
+#     end
+#     puts
+
+# end
+
+
+
+
+# Write a program to print inverted pyarmid using *
+
+# for i in 1..5
+
+#   for j in 1..i
+
+#     print " "
+    
+# end
+
+#  for k in 9.downto(2*i-1)
+     
+#      print "*"
+     
+# end
+
+# puts
+
+# end    
+
+
+
+
+
+
+# Write a program to sort an array in assecending order
+
+# arr = [2,5,7,4,3,26,7,8]
+
+
+# for i in 0..arr.length-1
+
+#     for j in i+1..arr.length-1
+
+#       if arr[i] > arr[j]
+           
+#           temp = arr[j]
+#           arr[j] = arr[i]
+#           arr[i] = temp
+#       end
+#   end
+# end
+
+
+# puts arr          # shows every element line by line 
+# print arr         # shows every element in single line
+    
+    
+    
+    
+#  Write a program to find number of vowel in a string
+
+
+# def vowels(strr)
+#     count = 0
+    
+#      for i in 0..strr.length-1
+         
+#          if strr[i] == 'a' || strr[i] == 'e' || strr[i] == 'i' || strr[i] == 'o' || strr[i] == 'u' ||
+#              strr[i] == 'A' || strr[i] == 'E' || strr[i] == 'I' || strr[i] == 'O' || strr[i] == 'U'  
+
+#          count += 1
+#      end
+#     end
+    
+#     print count
+
+# end
+
+# vowels("akhkawkahwebJRLGALALDGALDHGLASHDFL;IAHDLHASDL;HLWEjfiaejrgioharoighaoeirhgoiehrgo;ihawe")
+
+
+
+
+# Write a program to find number of constant in a string
+    
+    
+# def vowels(strr)
+#     count = 0
+    
+#      for i in 0..strr.length-1
+         
+#          if strr[i] == 'a' || strr[i] == 'e' || strr[i] == 'i' || strr[i] == 'o' || strr[i] == 'u' ||
+#              strr[i] == 'A' || strr[i] == 'E' || strr[i] == 'I' || strr[i] == 'O' || strr[i] == 'U'  
+
+#          next
+         
+#      elsif strr[i] > "A" && strr[i] <= "Z" || strr[i] > "a" && strr[i] <= "z"
+#           count +=1
+#      end
+     
+#     end
+    
+#     print count
+
+# end
+
+# vowels("aeioubnmgughjetd")
+
+
+
+
+# Write a program to count all alphabet in a string
+
+   
+#     def vowels(strr)
+#     count = 0
+    
+#      for i in 0..strr.length-1
+         
+#          if strr[i] >= 'a' && strr[i] <= 'z' || strr[i] >= "A" && strr[i] <= "Z"
+#              count += 1
+#      end
+     
+#     end
+    
+#     print count
+
+# end
+
+# vowels("adsfchbngj8294:::")
+
+
+
+# Write a program to add & subtract 10 days in a date
+
+# require 'date'
+
+# day = Date.today - 10
+
+# puts day
+
+
+# add and subtract one year from a Date
+
+# require 'date'
+
+# day = Date.today - 365
+
+# puts day
+
+
+
+#  add and subtract one month from a Date
+    
+# require 'date'
+
+# day = Date.today - 30
+
+# puts day
+
+
+# classses and its types 
+
+a = 100
+
+puts a                # 100
+
+b =  a.class  
+
+puts b                # integer
+
+c = b.class
+
+puts c.class          # class
+
+
+
+
+
+
+# class Monitor 
+
+#   def webkorps(value1 , value2)
+    
+#       print value1 , value2
+#       puts "Its a method of class monitor"
+    
+#      return "Hello brother"
+   
+#  end
+
+#  end
+
+
+#  class Student < Monitor
+   
+#     def webkorps
+#         super
+#         puts "Its a method of class monitor"
+#         return super + " my name is chirag"
+#     end
+# end 
+
+
+
+#  monitor = Student.new
+
+
+# puts monitor.webkorps(3 , 9);
+
+
+
+# # monitor = Monitor.new()
+
+# monitor.webkorps(4 ,8)
+  
+  
+  
+  
+  
+  # super function , variables types , blocks , maps , conditional statement , self class , slef methods , lambda
+  
+# def monitor()
+          
+#     arr = [1,2,3,4,5,6]
+#     arr1 = []
+#     i = arr.length-1 
+#     k = 0
+  
+#     for i in 0.downto(arr.length-1)
+     
+#       arr1[k] = arr[i]
+#       k++
+     
+#     end
+#   print arr1      
+# end
+
+# monitor()
+
+
+
