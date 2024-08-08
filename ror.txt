@@ -563,11 +563,7 @@ puts c.class          # class
 # monitor.webkorps(4 ,8)
   
   
-  
-  
-  
-  # super function , variables types , blocks , maps , conditional statement , self class , slef methods , lambda
-  
+
 # def monitor()
           
 #     arr = [1,2,3,4,5,6]
@@ -659,24 +655,212 @@ puts c.class          # class
 # Procs are created using Proc.new or the proc method.
 
 
-# my_proc = Proc.new { puts "This is a proc!" }
 
-# def greet(proc)
-#   puts "Hello!"
-#   proc.call  # This calls the proc
+# my_Proc = Proc.new { puts "heelo from proc"}    # Here capital P is there 
+
+# my_Proc = proc {puts "Hello baby"}              # Here small p is there
+
+# def greet(prroc)
+    
+#      prroc.call
 # end
 
-# greet(my_proc)
+# greet(my_Proc)
+
+# output
+# puts "heelo from proc
+# Hello baby
+
+
+
+# procs with different ways
+
+# my_Proc = proc {|name| puts "Hello baby my name is #{name}"}
+
+# my_Proc.call("varun")
+# my_Proc.call("Chirag")
+
+
+
+
+# Difference between blocks and procs *********************************************
+
+# Blocks: Simple, can't be stored, and only one per method.
+# Procs: Flexible, can be stored in variables, and passed as many times as needed.
+
+
+# how we can pass block as an argument
+
+# class Greetings
+    
+#     def greet(name , &block)       #&block reserve keyword used to take block as an argument
+        
+#         puts  "Hello from #{name}"
+        
+#         if block_given?        #block_given?  reserve keyword used to check weather
+#                                # block passed in a method or not
+#             block.call(name)   # its calls the block which is initialize below
+#         else
+            
+#            puts "Hello from greet"
+#        end
+# end        
+    
+# end
+
+# greettt = Greetings.new
+
+# greettt.greet("Alice") do |name|       # here we are calling greet method with name and object both 
+    
+# puts "Hello brother my name is #{name}"
+    
+# end
+
+# greettt.greet("bob")    # here we calling greet only with name
 
 
 # output
-# Hello!
-# This is a proc!
+# Hello from Alice
+# Hello brther my name is Alice
+# Hello from bob
+# Hello from greet
+
+
+# 2nd way of passing block inside a method 
+
+# class Parent
+#   def process(&block)
+#     block.call if block_given?
+#   end
+# end
+
+# class Child < Parent
+#   def process(&block)
+#     puts "Processing in Child"
+#     super
+#   end
+# end
+
+# child = Child.new
+# child.process { puts "Processing in Block" }
+
+
+# output
+
+# Processing in Child
+# Processing in Block
 
 
 
 
-# super keyword 
+# Lamdbas *****************************************************************************************
+
+# When it comes to encapsulating code into reusable units, lambdas are similar to procs.
+#  However, in terms of behavior and syntax, they do differ slightly from one another.
+# The main difference lies in argument handling and return statements.
+
+
+# What are lambdas?
+# Lambdas are anonymous functions that can be assigned to variables or passed as arguments.
+#  The lambda keyword or the -> syntax is used to define lambdas in Ruby, and behave like methods. 
+#  They can be considered as an advanced version of procs.
+
+
+
+# my_lambda = lambda { |x, y| x+y}  #using lambda keyword
+
+# my_lambda = ->(x , y) {x + y}    #using -> syntax
+
+
+
+# The main difference between lambdas and procs lies in how they handle return statements and argument checking.
+# Lambdas perform argument checking, ensuring that correct number of arguments are passed.
+# Additionally, lambdas return control to the calling method, whereas procs return immediately, bypassing the calling method
+
+
+# increment_and_double = ->(num) { (num+1) *2}
+
+# result = increment_and_double.call(5)
+# puts "Result = #{result}"
+
+
+# Notes for procs and lambdas
+
+
+# Conclusion
+# Ruby provides a means to organize statements into blocks of code that can be performed and supplied
+#  to functions.
+
+# It is possible to save, call, and send code blocks as parameters to methods by enclosing 
+# them in objects called procs in Ruby.
+
+# Using the call method, procs can be called and reused because they can be assigned to variables, 
+# making them callable.
+
+# Procs can be supplied to methods as arguments, giving a mechanism to transmit both behavior
+#  and data and increasing the flexibility of the code.
+
+# Although lambdas and procs are similar, they differ slightly in their syntax and behavior,
+#  including strict parameter checking and method-like return statements.
+
+# Closures, including lambdas and procs, can return values to the calling context using the 
+# return keyword, facilitating data exchange between closures and their callers.
+
+
+
+
+# closures*************************************************************************************
+
+# so yield call backs to greeter function and pass greeting  
+
+
+# Block(Closure): The block { |greet| puts greet + ", World!" } is a closure because it captures 
+# the greeting variable from the method's scope and can use it when executed.
+ 
+# def greeter
+     
+# greeting = "hello"
+# yield(greeting)
+
+# end
+
+# greeter do |greet|
+# puts greet + ", World!"
+# end
+
+# output
+# Hello world
+
+
+
+# def create_closure
+     
+# message = "Hello from create closure"
+
+# proc = Proc.new do              # a new proc object which is a closure is created . This proc capture the message variable
+#     puts message
+# end
+
+
+# return proc
+# end
+
+# create_closure.call
+
+# Output : Hello from create closure
+
+# Closures are blocks, procs, or lambdas that capture the variables from their surrounding context
+# (the environment where they were defined).
+
+
+# They allow you to "freeze" the environment and use it later, even if the environment 
+# where the closure was created no longer exists.
+
+
+
+
+
+# super keyword **************************************************************
 
 # with arguments
 # class Parent
@@ -761,12 +945,6 @@ puts c.class          # class
 
 
 
-# Difference between blocks and procs
-
-# Blocks: Simple, can't be stored, and only one per method.
-# Procs: Flexible, can be stored in variables, and passed as many times as needed.
-
-
 
 # exception handling 
 
@@ -840,5 +1018,92 @@ puts c.class          # class
 # child = Child.new
 
 # child.foo
+
+
+
+
+# super with multiple ancestor or we can say in multilevel inheritance 
+
+# class Grandparent
+#   def foo
+#     "Hello from Grandparent"
+#   end
+# end
+
+# class Parent < Grandparent
+#   def foo
+#     super
+#   end
+# end
+
+# class Child < Parent
+#   def foo
+#     super
+#   end
+# end
+
+# child = Child.new
+# puts child.foo
+
+
+
+
+# getter and setter ****************************************************************************
+
+
+# class Webkorps
+    
+#     attr_accessor :name
+    
+#     def initialize(name)
+#         @name = name
+#     end
+    
+# end
+
+# objext = Webkorps.new("Chirag")
+
+# puts objext.name    # getter 
+
+# objext.name = "alice"
+
+
+# puts objext.name     # setter
+
+
+# getter setter second example 
+
+# # class Webkorps
+    
+# attr_accessor :name    #getter and setter
+    
+# def name=(value)
+    
+#     @name = value.capitalize
+    
+# end
+
+# end
+
+# class Child < Webkorps
+
+# def name=(value)
+    
+#     super(value)
+    
+#     puts "Name has been set in the Child class"
+    
+# end
+# end
+
+# objext = Child.new
+
+# objext.name = "john"    # getter 
+
+# puts objext.name
+
+# # objext.name = "alice"
+
+# puts objext.name     # setter
 
 
