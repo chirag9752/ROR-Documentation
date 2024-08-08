@@ -588,3 +588,257 @@ puts c.class          # class
 
 
 
+
+
+
+
+
+
+
+
+
+
+# Types of variable 
+
+# 5. Variables
+# Local variables: name
+# Instance variables: @name
+# Class variables: @@name
+# Global variables: $name
+
+
+# shortcut of loop i.e timesloop
+
+# 5.times { |i| puts i }
+
+
+
+
+# Blocks are chunks of code which we right inside {} or do..end that can be passed to a method to be executed 
+
+# [1,2,2,3].each do |nums|
+#      puts nums
+#      end
+
+# or 
+
+# [1,2,33,4].each {|nums| puts nums}
+
+
+# In the examples above, |num| are block variables, which are placeholders for the values passed into the block.
+
+
+# yield keyword in ruby
+
+# When a method contains yield, it pauses at that point, and the block of code passed to it is executed. After the block finishes, the method continues running.
+
+# def webkorps 
+    
+#     puts "Hello mere bahi"
+    
+#     yield
+    
+#     print "bro how are you"
+#     puts
+    
+# end
+
+# webkorps {puts "kaisa hai tu"}       
+
+
+# o/p ->  Hello mere bahi    1st its print and then stop execution and block execution is start and then method continue 
+# kaisa hai tu
+# bro how are you
+
+
+
+# Procs
+
+# A proc is like a block, but it's an object, so you can save it to a variable and reuse it.
+# You can pass a proc to a method as an argument.
+# Procs are created using Proc.new or the proc method.
+
+
+# my_proc = Proc.new { puts "This is a proc!" }
+
+# def greet(proc)
+#   puts "Hello!"
+#   proc.call  # This calls the proc
+# end
+
+# greet(my_proc)
+
+
+# output
+# Hello!
+# This is a proc!
+
+
+
+
+# super keyword 
+
+# with arguments
+# class Parent
+    
+#     def initialize(name)
+#         @name = name
+#     end
+# end
+
+# class Child < Parent
+    
+#     def initialize(name , age)
+#         super(name)
+#         @age = age
+        
+#         puts "#{@name}"
+#         puts @age
+#     end
+# end
+
+# childObject = Child.new("Chirag" , 29)
+
+
+
+# super keyword without arguments
+
+
+# no need for an argument to be called threw super class it's automaticallly 
+# send child class arguments to base class
+
+# class Parent
+    
+#     def valueChange(name , age)
+#       namevalue = name
+#       agevalue = age
+       
+#       print namevalue ," ", agevalue
+#     end
+# end
+
+# class Child < Parent
+    
+#     def valueChange(name , age)
+#         super
+#     end
+# end
+
+# childObject = Child.new
+
+# childObject.valueChange("Chirag" , 29)
+
+
+
+# DIffernce between super and super()
+
+# class Parent
+#   def foo
+#     "Hello from Parent"
+#   end
+
+#   def bar(name)
+#     "Hello, #{name} from Parent"
+#   end
+# end
+
+# class Child < Parent
+#   def foo
+#     super
+#   end
+
+#   def bar(name)
+#     super()               #always call superclass method without arguments
+#   end
+# end
+
+# child = Child.new
+# puts child.foo # Output: "Hello from Parent"
+# puts child.bar("Rahul") # Output: "ERROR"   because when super()  means we call s
+# uperclass method without passing any argument even if child class sending 
+# any parameter then also super()  didn't call parent with arguments it's always 
+# call without arguments 
+
+
+
+# Difference between blocks and procs
+
+# Blocks: Simple, can't be stored, and only one per method.
+# Procs: Flexible, can be stored in variables, and passed as many times as needed.
+
+
+
+# exception handling 
+
+
+# 1st way
+# def calculate(a , b)
+    
+#     begin
+    
+#     c = a/b
+    
+#     puts c
+    
+#    rescue ZeroDivisionError
+       
+#     puts "caught an exception "
+#    end
+
+# end
+
+
+# calculate(3 , 0)
+
+# 2ND WAY
+# def calculate(a , b)
+    
+#     begin
+    
+#     c = a/b
+    
+#     puts c
+    
+#    rescue ZeroDivisionError
+       
+#     puts "caught an exception i.e. can't divide by zero"
+#    end
+
+# end
+
+
+# calculate(3 , 0)
+
+# one more way 
+
+# class Parent
+
+#     def foo
+
+#     raise "hello from parent exception"
+# end
+
+# end
+
+
+# class Child  < Parent
+    
+#     def foo
+        
+#     super 
+    
+#     puts "this line won't executed because threw super already an exception raise successfully"
+    
+#     rescue => e
+    
+#     puts "exception in this code #{e.message}"
+    
+# end
+
+# end
+
+# child = Child.new
+
+# child.foo
+
+
