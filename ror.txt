@@ -1361,3 +1361,247 @@ puts c.class          # class
 # puts objext.name     # setter
 
 
+
+# Files I/O
+
+# replace all things of files threw this two line written below
+
+# File.open("example.txt" , "w") do |file|
+#   file.puts "Hello world!"
+#   file.puts "This is a file operation in ruby"
+
+# end
+
+
+# read line by line
+# File.open("example.txt" , "r") do |file|
+  
+#   file.each_line do |line|
+#     puts line
+#   end
+
+# end
+
+# # appending in a file 
+
+# File.open("example.txt" , "a") do |file|
+
+#   file.puts "This is a file operation append operatinons ruby"
+
+# end
+
+# # r+ shows read and wright 
+# File.open("example.txt", "r+") do |file|
+#   puts file.read  # Reads the content
+#   file.write "Adding new content."  # Writes new content at the end
+# end
+
+
+# # W+ shows  wright and read
+
+# File.open("example.txt", "w+") do |file|
+#   file.puts "New content, overwriting the file."
+#   file.seek(0)  # Move the file pointer to the beginning
+#   puts file.read  # Reads the new content
+# end
+
+# # a+ append and read mode
+
+# File.open("example.txt", "a+") do |file|
+#   file.puts "Appending this line."
+#   file.seek(0)  # Move the file pointer to the beginning
+#   puts file.read  # Reads the entire file, including the new content
+# end
+
+
+# # read entire file
+
+# File.open("example.txt", "r") do |file|
+#   content = file.read
+#   puts content
+# end
+
+
+# # file size
+
+# puts File.size("example.txt")  # Outputs the size of the file in bytes
+
+
+
+# # checkking existing file
+
+# if File.exist?("example.txt")
+#   puts "File exists."
+# else
+#   puts "File does not exist."
+# end
+
+
+# Summary:
+# Modes: "w", "r", "a", "r+", "w+", "a+".
+# Operations: Reading, writing, appending, checking file size, and file existence.
+# Examples: Provided for each mode to illustrate typical use cases.
+
+
+
+
+
+
+# regualar expression ********************************************************************************
+
+# Regular Expressions are used for matching patterns within strings.
+
+# Ruby provides a powerful set of tools to create and use regex.
+
+# Common methods: =~, .match, .gsub, .scan, etc.
+
+# Application in RoR: Often used in validations, text processing, and data extraction.
+
+
+
+# if "hello world" =~ /world/
+    
+#     puts "found"
+    
+# else 
+#     puts "not found"
+# end
+
+# output found
+
+
+# for case sensitive 
+
+# if "hello World" =~ /world/i
+    
+#     puts "found"
+    
+# else 
+#     puts "not found"
+# end
+
+# found
+
+
+# matching email formate 
+
+# email = "chirag@gmail.com"
+
+# if email =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    
+#     print "match with email formate"
+#     puts
+    
+# else 
+#     puts "not match with email formate"
+    
+# end
+
+
+
+# gsub!  used to replce text
+
+# text = "I love dhruvi"
+
+# text.gsub!("dhruvi" , "anushka")
+
+# puts text
+
+
+# one more ways of using regular expressin i.e. regex
+
+
+# (\d+) captures a sequence of digits, and $1 refers to the first captured group (in this case, "123")
+
+# price = "price : $12345"
+
+# if price =~ /price : \$(\d+)/
+    
+#     puts "the price is #{$1}"       
+# end
+
+
+# output the price is 12345
+
+
+
+# Multi threading**************************************************************************************
+
+# Multithreading is a crucial concept in programming that enables the execution of multiple tasks
+# concurrently, thereby improving the performance and responsiveness of applications.
+# In Ruby, the Thread class provides native support for multithreading,
+# allowing developers to leverage the benefits of parallel execution.
+# This article aims to delve into the effective usage of Ruby threads,
+# providing insights into their creation, termination, lifecycle, exception handling,
+# and various other aspects.
+
+# Developers can use Ruby threads to build applications that can handle multiple tasks simultaneously. 
+# This is particularly advantageous for tasks that require significant computational power, 
+# involve I/O operations, or benefit from concurrent execution for improved performance. 
+# Ruby threads provide a higher-level abstraction, making it easier to implement concurrent 
+# behaviour and simplifying the development of multi-threaded programs.
+
+
+# e.g. 1
+
+# thread = Thread.new do   # thread.new keyword is used to create thread
+#     puts "helllo woldsdgsdf"
+# end
+
+
+# thread.join  # join keyword is generally used to access thread
+
+
+# e.g.2
+
+# th1 = Thread.new do 
+#     puts "From th1"
+# end
+
+# th2 = Thread.new do
+#     puts "From th2"
+# end
+
+# th1.join
+# th2.join
+
+# output  From th1
+        # From th2
+
+
+
+
+# Terminating ruby thread 
+# Threads in Ruby are terminated automatically when the code within the thread block completes.
+#  However, there might be cases where you need to explicitly terminate a thread.
+#   The Thread#kill method can be used to forcefully terminate a thread.
+
+# e.g.3
+
+# thread = Thread.new do 
+#    puts "hello world"
+#    end
+
+
+# thread.kill
+# thread.join
+# output   #              -> blank because we kill the thread now after that no sense of join
+
+
+
+
+# Thread Lifecycle
+
+
+# The lifecycle of a Ruby thread involves the creation, execution, and termination stages.
+# During creation, a thread is instantiated using Thread.new and enters the runnable state.
+# In the execution stage, the thread actively runs and performs tasks concurrently with other threads.
+# It can be paused using Thread#sleep and resumed later. Finally, the thread terminates either 
+# by completing its execution or being explicitly terminated using Thread#kill. 
+# Managing the thread lifecycle requires synchronization and proper resource management 
+# for the stability and integrity of the application.
+
+
+# Threads and Exceptions
+
+
