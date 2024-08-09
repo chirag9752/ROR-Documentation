@@ -602,6 +602,86 @@ puts c.class          # class
 # Class variables: @@name
 # Global variables: $name
 
+# local variable
+
+# def greetings(name)
+#     message = "Hello #{name}"
+#     puts message
+# end
+
+# greetings("Rohit") # Output: Hello Rohit
+
+
+# Instance variable
+
+# class Person
+#     def initialize(name)
+#         @name = name
+#     end
+
+#     def greetings
+#         puts "Hello #{@name}"
+#     end
+# end
+
+# person = Person.new("Rohit")
+# per son.greetings # Output: Hello Rohit
+
+
+# class variable
+
+# class Webkorps
+    
+#     @@count = 0
+    
+#     def initialize(name)
+        
+#         @name = name
+#         @@count += 1
+#     end
+    
+#     def self.count
+#         @@count
+#     end
+# end
+
+# w1 = Webkorps.new("Chirag")
+# w2 = Webkorps.new("varun")
+
+
+# puts Webkorps.count            # output 2
+
+
+# global variable
+
+# $counttt
+# class Webkorps
+    
+#     @@count = 0
+    
+#     def initialize(name)
+        
+#         @name = name
+#         @@count += 1
+#         $counttt = @@count
+#     end
+    
+#     # def self.count
+#     #     @@count
+#     # end
+# end
+
+# w1 = Webkorps.new("Chirag")
+# w2 = Webkorps.new("varun")
+
+
+# puts $counttt              # output 2
+
+
+
+
+
+
 
 # shortcut of loop i.e timesloop
 
@@ -610,7 +690,8 @@ puts c.class          # class
 
 
 
-# Blocks are chunks of code which we right inside {} or do..end that can be passed to a method to be executed 
+# Blocks are chunks of code which we right inside {} or do..end that can be passed to a method
+# to be executed 
 
 # [1,2,2,3].each do |nums|
 #      puts nums
@@ -859,6 +940,179 @@ puts c.class          # class
 
 
 
+# SELF keyword ************************************************************************************
+
+# class Webkorps
+    
+#     def initialize(name)
+#         @name = name
+#     end
+    
+#     def crook
+#         puts "my name is #{@name}"
+        
+#         puts "Hello this is from self #{self}"
+#     end
+    
+# end
+
+# obj1 =  Webkorps.new("Chirag")
+# obj2 =  Webkorps.new("varun")
+
+# obj1.crook
+# obj2.crook
+
+
+# here we creating class method i.e. threw self no need to create object when creating method threw self because it's belongs to class method
+
+# class Webkorps
+#   def self.greet
+#     puts "Hello from the Webkorps class!"
+#   end
+# end
+
+# Webkorps.greet
+
+# Output:
+# Hello from the Webkorps class!
+
+
+# self is class method when you use self in a class self refer to the class not an instance of a class
+
+# class Webkorps
+    
+#     def self.discreate           # it's a class method or we can say it's a singleton method 
+        
+#         puts "Hello from class self #{self}"
+#     end
+    
+# end
+
+
+# Webkorps.discreate     # it shows the output i.e. Helllo from class self Webkorps
+
+
+
+
+# self used to access instance variable 
+
+# class Webkorps
+    
+#     def initialize(name)
+#         self.name = name                # here self.name= name calling a setter method i.e. name= 
+#     end
+    
+#     def name=(name)                     # this is setter method i.e name=
+       
+#         @name = name.capitalize            # capitalize used to make first letter of name capital
+#     end
+    
+#     def self_name
+#         puts "my name is #{@name}"
+   
+#    end
+# end
+
+# web = Webkorps.new("chirag")
+# web.self_name
+
+
+
+# self one more e.g
+
+# class Example
+#     def self.func
+#         puts self.class # Output: class
+#     end
+# end
+  
+# Example.func
+
+
+# an if you see this
+
+# class Example
+#     def func
+#         puts self.class # Output: Example
+#     end
+# end
+  
+# example = Example.new
+# example.func
+
+
+
+# self Inside of a Class or Module Definition
+
+# Within a class or module definition, self refers to the class or module itself.
+#  It allows us to define methods and access class-level variables directly 
+#  without the need for a method call.
+
+# No need for method or class call 
+
+# module Webkorps
+    
+#     puts self       # output Webkorps
+    
+#     class Employee
+#         puts self       #  output Webkorps :: Employee
+#     end
+    
+# end
+
+
+
+# Summary:
+
+# self in Instance Methods: Refers to the instance of the class that called the method.
+# self in Class Methods: Refers to the class itself.
+# Using self to Define Class Methods: You can define a class method using self.method_name.
+# Using self to Access Instance Variables: Allows you to call instance methods like setters 
+# within other instance methods.
+
+
+# Singleton method 
+
+
+# class Webkorps 
+#     puts "Hello #{self}"
+#     end
+    
+#     w1 = Webkorps.new
+     
+#    def w1.func                 # here we are creating threw object memory address 
+       
+#        puts "hello #{self}"
+#    end
+   
+   
+#    w1.func
+
+#   output
+# Hello Webkorps
+# hello #<Webkorps:0x000064904e064080>       this is object memory address which tells that object is of webkorps class and after that hexadecimal memmory address
+
+
+# conclusion
+# The self variable in Ruby refers to the current object and its behavior depends on the context.
+
+# In a class method, self refers to the class itself. It can be used to define class-level variables
+# #  or methods.
+
+# In an instance method, self refers to the instance of the class on which the process is called.
+#  It allows accessing and modifying instance-specific data.
+
+# Within a class or module definition, self refers to the class or module itself.
+#  It is used to define class/module-level methods and variables.
+
+# In a singleton method, self refers to the singleton object on which the method is defined.
+#  Singleton methods are defined on specific instances rather than on the class itself.
+# Understanding the different contexts of self is crucial for writing clean and efficient Ruby code as it enables proper utilization of object-oriented concepts and encapsulation.
+# By using self-effectively, developers can manipulate and access data at the appropriate level of abstraction, resulting in more maintainable and organized code.
+
+
+
+
 
 # super keyword **************************************************************
 
@@ -999,7 +1253,7 @@ puts c.class          # class
 # end
 
 
-# class Child  < Parent
+# class Child < Parent
     
 #     def foo
         
