@@ -509,20 +509,17 @@
 
 # classses and its types 
 
-a = 100
+# a = 100
 
-puts a                # 100
+# puts a                # 100
 
-b =  a.class  
+# b =  a.class  
 
-puts b                # integer
+# puts b                # integer
 
-c = b.class
+# c = b.class
 
-puts c.class          # class
-
-
-
+# puts c.class          # class
 
 
 
@@ -530,37 +527,48 @@ puts c.class          # class
 
 #   def webkorps(value1 , value2)
     
-#       print value1 , value2
+#      puts value1 , value2
 #       puts "Its a method of class monitor"
     
 #      return "Hello brother"
    
 #  end
-
 #  end
 
 
 #  class Student < Monitor
    
-#     def webkorps
+#     def webkorps(a , b)
 #         super
-#         puts "Its a method of class monitor"
+#         puts "Its a method of webkorps monitor"
+        
 #         return super + " my name is chirag"
 #     end
 # end 
 
 
+# puts Student.new.webkorps(3 , 9);
 
-#  monitor = Student.new
-
-
-# puts monitor.webkorps(3 , 9);
-
-
-
-# # monitor = Monitor.new()
+# monitor = Monitor.new()
 
 # monitor.webkorps(4 ,8)
+
+
+# output
+# 3
+# 9
+# Its a method of class monitor
+# Its a method of webkorps monitor
+# 3
+# 9
+# Its a method of class monitor
+# Hello brother my name is chirag
+# 4
+# 8
+# Its a method of class monitor
+
+
+
   
   
 
@@ -707,11 +715,14 @@ puts c.class          # class
 
 # yield keyword in ruby
 
+# used to stop execution of a method and call a block first
 # When a method contains yield, it pauses at that point, and the block of code passed to it is executed. After the block finishes, the method continues running.
+
+
 
 # def webkorps 
     
-#     puts "Hello mere bahi"
+#     puts "Hello mere bhai"
     
 #     yield
     
@@ -737,9 +748,16 @@ puts c.class          # class
 
 
 
-# my_Proc = Proc.new { puts "heelo from proc"}    # Here capital P is there 
+# my_proc = Proc.new {puts "Hello from proc"}   # Here capital P is there 
 
-# my_Proc = proc {puts "Hello baby"}              # Here small p is there
+# my_proc.call                    #.call used to call proc , block and lambda           # output Hello from proc
+
+
+# my_proc = proc {puts "Hello from proc"}           # Here small p is there
+
+# my_proc.call                  # output hello from proc
+
+
 
 # def greet(prroc)
     
@@ -749,8 +767,8 @@ puts c.class          # class
 # greet(my_Proc)
 
 # output
-# puts "heelo from proc
-# Hello baby
+# "Hello from proc
+# Hello from proc
 
 
 
@@ -848,15 +866,70 @@ puts c.class          # class
 
 
 
-# my_lambda = lambda { |x, y| x+y}  #using lambda keyword
+# my_lambda = lambda { |x, y| puts x+y}  #using lambda keyword
 
-# my_lambda = ->(x , y) {x + y}    #using -> syntax
+# my_lambda = ->(x , y) {puts x + y}    #using -> syntax
 
 
 
 # The main difference between lambdas and procs lies in how they handle return statements and argument checking.
 # Lambdas perform argument checking, ensuring that correct number of arguments are passed.
 # Additionally, lambdas return control to the calling method, whereas procs return immediately, bypassing the calling method
+
+
+# difference between proc and lambda
+
+# Procs: return exits both the Proc and the method that called it.
+# Lambdas: return exits only the lambda, allowing the method that called the lambda to continue executing.
+
+
+# proc example 
+
+# def proc_example
+#   my_proc = Proc.new do
+#     puts "Inside Proc"
+#     return "Returning from Proc"
+#   end
+  
+#   result = my_proc.call
+#   puts "This line will not be executed."    # because return inside proc return immediately that's why method ends its execution
+#   return result
+# end
+
+# puts proc_example
+
+# output
+# Inside Proc
+# Returning from Proc
+
+# lambda example 
+
+
+# def lammm
+    
+#     my_lambda = lambda do 
+        
+#         puts "HEllo bro from lambda"
+        
+#         return "return from lambda"
+#     end
+    
+    
+#     result = my_lambda.call
+    
+#     puts "this line is executed"   # here it work because return inside lambda didn't return immediately it's return statement didn't stop execution of method it's stop execution of only lambda
+    
+#     return result
+# end
+
+# puts lammm
+
+# output
+# HEllo bro from lambda
+# this line is executed
+# return from lambda
+
+
 
 
 # increment_and_double = ->(num) { (num+1) *2}
@@ -938,6 +1011,22 @@ puts c.class          # class
 # where the closure was created no longer exists.
 
 
+# def make_multiplier(factor)
+#   # `factor` is a variable in the scope of this method
+#   Proc.new do |number|
+#     number * factor
+#   end
+# end
+
+# multiplier_by_3 = make_multiplier(3)
+# multiplier_by_5 = make_multiplier(5)
+
+# puts multiplier_by_3.call(10)  # Outputs: 30
+# puts multiplier_by_5.call(10)  # Outputs: 50
+
+
+
+
 
 
 # SELF keyword ************************************************************************************
@@ -962,6 +1051,12 @@ puts c.class          # class
 # obj1.crook
 # obj2.crook
 
+# output 
+# my name is Chirag
+# Hello this is from self #<Webkorps:0x00005796ef041608>  # hexadecimal code with class name
+# my name is varun
+# Hello this is from self #<Webkorps:0x00005796ef0414c8>
+
 
 # here we creating class method i.e. threw self no need to create object when creating method threw self because it's belongs to class method
 
@@ -975,6 +1070,8 @@ puts c.class          # class
 
 # Output:
 # Hello from the Webkorps class!
+
+
 
 
 # self is class method when you use self in a class self refer to the class not an instance of a class
@@ -1071,9 +1168,24 @@ puts c.class          # class
 # within other instance methods.
 
 
-# Singleton method 
 
 
+# conclusion
+# The self variable in Ruby refers to the current object and its behavior depends on the context.
+
+# In a class method, self refers to the class itself. It can be used to define class-level variables
+# #  or methods.
+
+# In an instance method, self refers to the instance of the class on which the process is called.
+#  It allows accessing and modifying instance-specific data.
+
+# Within a class or module definition, self refers to the class or module itself.
+#  It is used to define class/module-level methods and variables.
+
+
+# Singleton method **********************************************************************************
+
+# we can create only one function threw one object that why it's name is a singleton method
 # class Webkorps 
 #     puts "Hello #{self}"
 #     end
@@ -1094,16 +1206,6 @@ puts c.class          # class
 
 
 # conclusion
-# The self variable in Ruby refers to the current object and its behavior depends on the context.
-
-# In a class method, self refers to the class itself. It can be used to define class-level variables
-# #  or methods.
-
-# In an instance method, self refers to the instance of the class on which the process is called.
-#  It allows accessing and modifying instance-specific data.
-
-# Within a class or module definition, self refers to the class or module itself.
-#  It is used to define class/module-level methods and variables.
 
 # In a singleton method, self refers to the singleton object on which the method is defined.
 #  Singleton methods are defined on specific instances rather than on the class itself.
@@ -1144,6 +1246,8 @@ puts c.class          # class
 
 # no need for an argument to be called threw super class it's automaticallly 
 # send child class arguments to base class
+
+
 
 # class Parent
     
@@ -1271,7 +1375,7 @@ puts c.class          # class
 
 # child = Child.new
 
-# child.foo
+# child.foo            # output exception is this code ---
 
 
 
@@ -1326,6 +1430,8 @@ puts c.class          # class
 
 
 # getter setter second example 
+
+
 
 # # class Webkorps
     
@@ -1445,8 +1551,6 @@ puts c.class          # class
 
 
 
-
-
 # regualar expression ********************************************************************************
 
 # Regular Expressions are used for matching patterns within strings.
@@ -1524,8 +1628,18 @@ puts c.class          # class
 # output the price is 12345
 
 
+# scan method
+
+# text = "Cats are cute. Cats are fun."
+# matches = text.scan(/Cats/)
+
+# puts matches.inspect  # Outputs: ["Cats", "Cats"]
+
+
 
 # Multi threading**************************************************************************************
+
+
 
 # Multithreading is a crucial concept in programming that enables the execution of multiple tasks
 # concurrently, thereby improving the performance and responsiveness of applications.
@@ -1544,12 +1658,12 @@ puts c.class          # class
 
 # e.g. 1
 
-# thread = Thread.new do   # thread.new keyword is used to create thread
+# thread = Thread.new do                 # thread.new keyword is used to create thread
 #     puts "helllo woldsdgsdf"
 # end
 
 
-# thread.join  # join keyword is generally used to access thread
+# thread.join                           # join keyword is generally used to access thread
 
 
 # e.g.2
@@ -1603,5 +1717,338 @@ puts c.class          # class
 
 
 # Threads and Exceptions
+
+# Thread.abort_on_exception = true    
+# If you have a multi-threaded application where a failure in any thread indicates a serious problem 
+# that should cause the entire program to halt, setting abort_on_exception to true ensures that such 
+# failures are not silently ignored. It forces the application to stop,
+#  which might be necessary if the error in one thread compromises the integrity of the
+#   entire application.
+
+
+
+# Thread.abort_on_exception = true              #
+
+# th = Thread.new do
+#     # Thread code goes here
+#     raise "Exception raised"
+# end
+
+# # ...
+
+# begin
+#     th.join
+# rescue => e
+#     puts "Exception caught: #{e.message}"
+# end
+
+# Output => Exception caught: Exception raised
+
+
+
+
+# Thread Pools
+
+
+# Thread Pool is an abstraction that allows us to assign a task to a pool of threads,
+# where one of the available threads will execute the task. Thread pools are beneficial in scenarios
+# where the overhead of creating and destroying threads is a concern. By creating a pool of reusable 
+# worker threads and reusing them for different tasks, the performance of long-running applications, 
+# such as services, can be significantly improved.
+
+# The concurrent-ruby gem provides higher-level abstractions in addition to thread pools.
+# Thread pools are referred to as 'executors'. An executor is an object that can accept a unit of
+# work and execute it. Thread pools are the primary type of executor we will encounter, with other
+# types primarily used for testing or unusual edge cases.
+
+# Here is an example of using a thread pool executor:
+
+
+# require 'concurrent'
+
+# th_pool = Concurrent::ThreadPoolExecutor.new(min_threads: 5, max_threads: 5)
+
+# 5.times do |i|
+#     th_pool.post do
+#         puts "Task #{i} executed by thread #{Thread.current.object_id}"
+#     end
+# end
+
+# th_pool.shutdown
+# th_pool.wait_for_termination
+
+
+
+
+# Thread Variables
+
+# Ruby threads have thread-local variables that can be used to store and access data specific
+# to each thread. Thread-local variables are isolated and not shared among threads.
+# To define and access thread-local variables, we can use the Thread.current object.
+
+
+# th = Thread.new do
+#     Thread.current[:greet] = "Hello"
+#     puts Thread.current[:greet]
+# end
+
+# th.join        # output hello
+
+
+
+# Thread priority
+
+
+# Ruby threads have a concept of priority that can be used to influence their scheduling. 
+# The default thread priority is 0. Higher-priority threads are given preference by the Ruby 
+# interpreter during scheduling. To set the priority of a thread, 
+# we can use the Thread#priority= method.
+
+# Here's an example:
+
+# th = Thread.new do
+#     # code
+# end
+
+# th.priority = 2
+
+
+
+
+# Thread exclusion
+
+# often referred to as mutual exclusion, is a concept used to prevent multiple threads 
+# from accessing shared resources at the same time. This is important because if multiple threads 
+# try to modify the same resource (like a variable or file) simultaneously, it can lead to 
+# unpredictable results, such as data corruption or incorrect calculations.
+
+
+# Imagine two threads trying to increment the same counter variable at the same time. 
+# Without thread exclusion, both threads might read the current value of the counter at the same time, 
+# increment it, and then write the new value back. If the initial value was 5, you might expect the 
+# final value to be 7 after both threads run, but due to the race condition, the final value might 
+# still be 6.
+
+
+# require 'concurrent'
+
+# mutex = Mutex.new
+# counter = 0
+
+# # Create a thread pool with 5 threads
+# th_pool = Concurrent::ThreadPoolExecutor.new(min_threads: 5, max_threads: 5)
+
+# 10.times do
+#   th_pool.post do
+#     mutex.synchronize do
+#       # Only one thread can enter this block at a time
+#       temp = counter
+#       temp += 1
+#       counter = temp
+#     end
+#   end
+# end
+
+# th_pool.shutdown
+# th_pool.wait_for_termination
+
+# puts "Final counter value: #{counter}"
+
+
+
+
+# Handling Deadlock
+
+# Deadlock is a situation where two or more threads are blocked indefinitely, waiting for each other 
+# to release resources. Deadlocks can occur when threads acquire locks in different orders, 
+# leading to a circular dependency. To avoid deadlocks, it's essential to carefully design our 
+# multithreaded code and ensure that locks are acquired in a consistent order.
+
+# Here are some general guidelines to prevent deadlocks:
+
+# Always acquire locks in the same order across all threads.
+# Use timeouts when acquiring locks to prevent indefinite waiting.
+# Use thread-safe data structures and libraries to minimize the need for manual synchronization
+
+
+
+
+# Module and Mixins
+
+
+# What is a Module?
+# A module in Ruby is a collection of methods, constants, and other module or class definitions. 
+# Modules are similar to classes, but they cannot be instantiated (you can't create objects from them).
+# They are mainly used to group related methods together and to share code between classes.
+
+
+
+# What is a Mixin?
+
+# A mixin is a way to add functionality from a module to a class. When a module is included in a 
+# class, the methods from the module become available as instance methods of that class. 
+# This is the essence of a mixin in Ruby.
+
+
+# Inculding a module
+
+# When you include a module in a class, the methods defined in the module become instance methods 
+# of the class. This means that objects (instances) of the class can use those methods.
+
+
+# module Parent
+    
+#     puts "Hello from parent"
+    
+#     def Child
+#         puts "helllo from child"
+#     end
+    
+# end
+
+# class Child2
+        
+#    include Parent   
+#    puts "hello"
+
+# end
+    
+
+# children = Child2.new
+
+# children.Child
+
+# output
+# Hello from parent
+# hello
+# helllo from child
+
+
+
+# extending a module in mixins
+
+# When you extend a module in a class, the methods defined in the module become class methods of that 
+# class. This means you can call those methods directly on the class itself, rather than on an 
+# instance of the class.
+
+
+# module Parent
+    
+#     puts "Hello from parent"
+    
+#     def Child
+#         puts "helllo from child"
+#     end
+    
+# end
+
+#     class Child2
+        
+#         extend Parent
+        
+#         puts "hello"
+#     end
+    
+
+
+# Child2.Child                   # in extend we don't need to create instance i.e. object of a class
+
+# output
+# Hello from parent
+# hello
+# helllo from child
+
+
+
+# one more e.g
+
+# module A
+#   def hello
+#     puts "Hello from module A!"
+#   end
+# end
+
+# module B
+#   def hello
+#     puts "Hello from module B!"
+#   end
+# end
+
+# class MyClass
+#   include A
+#   include B
+# end
+
+# obj = MyClass.new
+# obj.hello                 # ouptput is Hello from module B!
+
+# Since B was included after A, its hello method is found first.
+
+
+
+# # What is a Hash?
+# In Ruby and Ruby on Rails (RoR), a hash is a collection of key-value pairs, like a dictionary.
+#  You use keys to look up values. It’s a bit like an address book where you can look up a person’s
+#   address (the value) using their name (the key).
+
+
+
+
+
+# Person = {
+#         Name: "CHirag Agrawal",
+#         City: "Chhindwara",
+#         Age:  23
+#     }
+    
+    
+    # puts Person[:Name]
+    
+    # puts Person[:Age]
+    
+    # Person[:gender] = "Male"
+    
+    # puts Person[:gender]
+    
+    # puts Person.keys
+    
+    # puts Person.values
+    
+    
+    # Person.each do |key , value|
+    #     puts "keys : #{key} , values : #{value}"
+    # end
+    
+    
+    
+    # Person.delete(:City)
+    
+    # puts Person[:City]               #output : blank
+    
+    
+    
+#     puts Person.has_key?(:Name)
+#     puts Person.value?("CHirag Agrawal")
+    
+    
+    
+# Ranges 
+
+# represent with 2 and three dot's i.e. 1..5 in which 1 to 5
+# where both included and 1...5 here in three dot's 5 excluded
+    
+# to_a convert range of all elements into an array of a series
+
+# range_array = (1..5).to_a
+# puts range_array.inspect  # Outputs: [1, 2, 3, 4, 5]
+
+
+
+
+
+
+    
+    
+    
 
 
