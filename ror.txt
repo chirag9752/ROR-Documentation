@@ -2089,8 +2089,6 @@
 
 
 
-
-
 # arr = ["scaler", "academy", "interview bit"]
 
 # a = arr.each { |element| element.capitalize }
@@ -2102,6 +2100,11 @@
 
 
 
+# one more e.g
+
+# arr = [1, 2, 3]
+# squared = arr.map { |n| n * n }
+# puts squared.inspect  # Outputs: [1, 4, 9]
 
 
 
