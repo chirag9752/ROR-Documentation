@@ -566,10 +566,6 @@
 # 4
 # 8
 # Its a method of class monitor
-
-
-
-  
   
 
 # def monitor()
@@ -602,7 +598,7 @@
 
 
 
-# Types of variable 
+# Types of variable *********************************************************************************
 
 # 5. Variables
 # Local variables: name
@@ -713,7 +709,7 @@
 # In the examples above, |num| are block variables, which are placeholders for the values passed into the block.
 
 
-# yield keyword in ruby
+# yield keyword in ruby******************************************************************************
 
 # used to stop execution of a method and call a block first
 # When a method contains yield, it pauses at that point, and the block of code passed to it is executed. After the block finishes, the method continues running.
@@ -740,7 +736,7 @@
 
 
 
-# Procs
+# Procs*********************************************************************************************
 
 # A proc is like a block, but it's an object, so you can save it to a variable and reuse it.
 # You can pass a proc to a method as an argument.
@@ -942,6 +938,7 @@
 
 
 # Conclusion
+
 # Ruby provides a means to organize statements into blocks of code that can be performed and supplied
 #  to functions.
 
@@ -1139,7 +1136,7 @@
 
 
 
-# self Inside of a Class or Module Definition
+# self Inside of a Class or Module Definition********************************************************
 
 # Within a class or module definition, self refers to the class or module itself.
 #  It allows us to define methods and access class-level variables directly 
@@ -1216,7 +1213,7 @@
 
 
 
-# super keyword **************************************************************
+# super keyword *************************************************************************************
 
 # with arguments
 # class Parent
@@ -1873,7 +1870,7 @@
 
 
 
-# Module and Mixins
+# Module and Mixins***********************************************************************************
 
 
 # What is a Module?
@@ -1986,7 +1983,8 @@
 
 
 
-# # What is a Hash?
+# # What is a Hash?***********************************************************************************
+
 # In Ruby and Ruby on Rails (RoR), a hash is a collection of key-value pairs, like a dictionary.
 #  You use keys to look up values. It’s a bit like an address book where you can look up a person’s
 #   address (the value) using their name (the key).
@@ -2041,6 +2039,78 @@
 
 # range_array = (1..5).to_a
 # puts range_array.inspect  # Outputs: [1, 2, 3, 4, 5]
+
+
+
+
+# Map method ***************************************************************************************
+
+
+# hash = {
+#     "key1": 1,
+#     "key2": 2,
+#     "key3": 3
+# }
+
+
+# transformed_hash = hash.map{ |key , value| [key , value*2]}.to_h
+
+# puts transformed_hash
+
+# How to Use Map with an Index?
+
+
+# Cities = ["mumbai" , "delhi" , "kolkata"]
+
+# IndexCities = Cities.map.with_index {|item , index| "#{item} , #{index}"}
+
+# puts IndexCities
+
+# shorthand notations used to convert each values into string
+
+# numbers = [1, 4, 7]
+
+
+# str_num = numbers.map(&:to_s)
+
+# print str_num                             #["1", "4", "7"]
+
+
+
+# Map vs each method
+
+
+# The map and each method are both used to traverse collections in Ruby, but they have different purposes.
+
+# Each method simply iterates over a collection and operates on each element. The return value of each method is the original collection.
+
+# The map method, on the other hand, iterates over a collection and transforms each element of the collection using a block of code. The return value of the map method is a new collection with the transformed data.
+
+
+
+
+
+
+# arr = ["scaler", "academy", "interview bit"]
+
+# a = arr.each { |element| element.capitalize }
+# puts a     # ["scaler", "academy", "interviewbit"]
+
+# b = arr.map { |element| element.capitalize }
+# puts b     # ["Scaler", "Academy", "Interviewbit"]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
