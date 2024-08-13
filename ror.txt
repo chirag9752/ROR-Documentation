@@ -1051,6 +1051,7 @@
 # output 
 # my name is Chirag
 # Hello this is from self #<Webkorps:0x00005796ef041608>  # hexadecimal code with class name
+
 # my name is varun
 # Hello this is from self #<Webkorps:0x00005796ef0414c8>
 
@@ -1183,6 +1184,7 @@
 # Singleton method **********************************************************************************
 
 # we can create only one function threw one object that why it's name is a singleton method
+
 # class Webkorps 
 #     puts "Hello #{self}"
 #     end
@@ -1202,12 +1204,34 @@
 # hello #<Webkorps:0x000064904e064080>       this is object memory address which tells that object is of webkorps class and after that hexadecimal memmory address
 
 
+
+# one more way to create singleton method 
+
+# You can also define a singleton method directly on the class itself. This method will only be 
+# available on the class object itself, not on instances of the class.
+
+
+# class MyClass
+# end
+
+# def MyClass.singleton_class_method                  # here we create singleton method inside class
+#   "I'm a class method"
+# end
+
+# puts MyClass.singleton_class_method # => "I'm a class method"
+
+
+# Notes 
+# we can create more than one singleton method threw single object
+
 # conclusion
 
 # In a singleton method, self refers to the singleton object on which the method is defined.
 #  Singleton methods are defined on specific instances rather than on the class itself.
-# Understanding the different contexts of self is crucial for writing clean and efficient Ruby code as it enables proper utilization of object-oriented concepts and encapsulation.
-# By using self-effectively, developers can manipulate and access data at the appropriate level of abstraction, resulting in more maintainable and organized code.
+# Understanding the different contexts of self is crucial for writing clean and efficient Ruby code 
+# as it enables proper utilization of object-oriented concepts and encapsulation.
+# By using self-effectively, developers can manipulate and access data at the appropriate level of 
+# abstraction, resulting in more maintainable and organized code.
 
 
 
@@ -1216,6 +1240,7 @@
 # super keyword *************************************************************************************
 
 # with arguments
+
 # class Parent
     
 #     def initialize(name)
@@ -1248,7 +1273,7 @@
 
 # class Parent
     
-#     def valueChange(name , age)
+# def valueChange(name , age)
 #       namevalue = name
 #       agevalue = age
        
@@ -1413,17 +1438,17 @@
 #     def initialize(name)
 #         @name = name
 #     end
-    
+
 # end
 
 # objext = Webkorps.new("Chirag")
 
 # puts objext.name    # getter 
 
-# objext.name = "alice"
+# objext.name = "alice"       # setter
 
 
-# puts objext.name     # setter
+# puts objext.name     
 
 
 # getter setter second example 
@@ -1472,7 +1497,6 @@
 # File.open("example.txt" , "w") do |file|
 #   file.puts "Hello world!"
 #   file.puts "This is a file operation in ruby"
-
 # end
 
 
@@ -1607,6 +1631,7 @@
 # text.gsub!("dhruvi" , "anushka")
 
 # puts text
+
 
 
 # one more ways of using regular expressin i.e. regex
@@ -2053,7 +2078,7 @@
 # }
 
 
-# transformed_hash = hash.map{ |key , value| [key , value*2]}.to_h
+# transformed_hash = hash.map{ |key , value| [key , value*2]}.to_h        # to_h convert into an array
 
 # puts transformed_hash
 
@@ -2109,12 +2134,77 @@
 
 
 
+# # Methods Ending with a Question Mark (?)**************************************************
+
+# Methods that end with a question mark (?) are typically used to indicate that the method 
+# returns a boolean value (true or false). These methods are often used to check a condition or 
+# query the state of an object.
+
+
+# class User
+#   attr_accessor :age
+
+#   def initialize(age)
+#     @age = age
+#   end
+
+#   def adult?
+#     @age >= 18
+#   end
+# end
+
+# user = User.new(20)
+# puts user.adult?  # Output: true
+
+# user = User.new(15)
+# puts user.adult?  # Output: false
+
+
+# Methods Ending with an Exclamation Mark (!)*****************************************************
+
+# Methods that end with an exclamation mark (!) are conventionally used to indicate that the 
+# method performs some kind of "dangerous" or potentially surprising operation. 
+# This could mean that the method modifies the object it is called on, or it could raise an 
+# exception if something goes wrong.
+
+# name = "hello"
+
+# # Non-dangerous method
+# name.capitalize  # Returns "Hello" but does not modify the original string
+# puts name        # Output: "hello"
+
+# # Dangerous method
+# name.capitalize! # Modifies the original string
+# puts name        # Output: "Hello"
 
 
 
 
+# case statement in ror ******************************************************************************
+
+# its just like a switch statement of other language
+
+# def simplifyDay(day)
+    
+#     case day
+    
+#     when "monday"
+#         puts "starting of the week"
+    
+#     when "Tueday"
+#         puts "second day of week"
+    
+#     when "friday"
+#         puts "Ending day of the webkorps"
+        
+#     else puts "just another day"
+#     end
+    
+# end
 
 
+# simplifyDay("friday")                          #"Ending day of the webkorps
+# simplifyDay("monday")                         #starting of the week
 
 
 
