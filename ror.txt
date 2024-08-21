@@ -488,7 +488,7 @@
 # puts day
 
 
-# add and subtract one year from a Date
+# Write a program to add and subtract one year from a date
 
 # require 'date'
 
@@ -498,7 +498,7 @@
 
 
 
-#  add and subtract one month from a Date
+# Write a program to add and subtract one month from a date
     
 # require 'date'
 
@@ -691,7 +691,7 @@
 
 # 5.times { |i| puts i }
 
-
+# if you wanna print it 10 times than 10.times
 
 
 # Blocks are chunks of code which we right inside {} or do..end that can be passed to a method
@@ -2208,9 +2208,6 @@
 
 
 
-
-
-    
     
     
 
