@@ -212,6 +212,130 @@
 # end
 
 
+# Project 2 ***************************************************************************
+
+# Do you want to lookup on area code based on a city name?(Y?N)
+# y
+# which city do you want the area code for?
+# newyork
+# india
+# china
+# miami
+# london
+# uk
+# enter the selection
+# newyork
+# the area code for newyork is 212
+# Do you want to lookup on area code based on a city name?(Y?N)
+
+
+
+# code of project--------------------------------
+
+# dial_book = {
+#     "newyork" => "212",
+#     "india" => "91",
+#     "china" => "002",
+#     "miami" => "305",
+#     "london" => "224",
+#     "uk" => "331"
+# }
+
+# i = 1
+
+# while i != 0
+    
+# puts "Do you want to lookup on area code based on a city name?(Y?N)"
+# value = gets.chomp
+
+# value = value.downcase
+
+# break if value != "y"
+    
+#     puts "which city do you want the area code for?"
+
+#     dial_book.each do |key , value|
+#       puts key
+#     end
+
+#     puts "enter the selection"
+#     str = gets.chomp
+
+#     puts "the area code for #{str} is #{dial_book[str]}"
+
+# end
+
+
+# going to hash password by using bcrypt 
+# require 'bcrypt'
+
+# my_password = BCrypt::Password.create("my password")
+# puts my_password         # it's gives us "$2a$12$ZlSOWR5vrfuVGCieVZGr7ulVdoldZriSBp025kOTpSUKOrJWWyC5O"
+
+# my_password = BCrypt::Password.new("$2a$12$ZlSOWR5vrfuVGCieVZGr7ulVdoldZriSBp025kOTpSUKOrJWWyC5O")
+
+# puts my_password == "my password"             # true explain each line of code so that i can understood why true
+
+
+# lets do more expriment
+
+#  user = [
+#     {username: "chirag",
+#     password: "chirag@2001"},
+#     {username: "dhruvi",
+#     password: "dhruvi@2001"},
+#     {username: "varun",
+#       password: "varun@2000"}
+# ]
+
+
+
+# def make_hash_version(password)
+#      BCrypt::Password.create(password)
+# end
+
+
+# def create_secure_password(list_of_users)
+#      list_of_users.each do |user|
+#          user[:password] = make_hash_version(user[:password])
+#      end
+
+#      list_of_users
+# end
+
+# puts create_secure_password(user)
+
+# output 
+# {:username=>"chirag", :password=>"$2a$12$xx89UvcLACjKSl83iPigK.tssxZqsSx/AelH.sW6UNSDdMrsLWILW"}
+# {:username=>"dhruvi", :password=>"$2a$12$dqr1SXfg/2a85xJfaWXhsubBP4YW62IvagxJcLlBQZri40t4NhK2q"}
+# {:username=>"varun", :password=>"$2a$12$v6m6IEpmPXFZOOTkKmREkO9wbGyilaSK24gJiac45UAKqwhQI9ZE2"}
+
+
+
+
+def authenticate(username , password , list_of_users)
+   list_of_users.each do |user|
+    if user[:username] == username && verify_hash_digest(user[:password]) == password
+      return user
+    end
+  end
+
+  "Credentials not found"
+end
+
+3.times {puts}
+
+puts authenticate("chirag" , "chirag@2001" , user)
+puts authenticate("dhruvi" , "dhruvi@2001" , user)
+puts authenticate("vaun" , "vaun@2001" , user)
+
+# output
+# {:username=>"chirag", :password=>"$2a$12$nPkA3z6tq2..l3qUPkd6w.82Pxj2.7PyqyRsF4zjTIDVULSAfYhDi"}
+# {:username=>"dhruvi", :password=>"$2a$12$vru/w6o2DUxUhy14MlGm9.4Y0Xtb2zHtaQzrqwYp23MxH7eHPbMuG"}
+# Credentials not found
+
+
+
 
 
 

@@ -1,0 +1,23 @@
+->cd /home/username/projects   # go inside your project directory
+
+->rails new my-rails-app      # for making new rails app
+
+
+->cd my-rails-app             # navigate to project direcotry
+
+
+->Set Up the Database
+
+# Configure your database settings in 
+# config/database.yml if needed.
+
+# Create and migrate the database
+
+rails db:create
+rails db:migrate
+
+
+-> start rails server 
+rails server   # threw this commmand rails server start automatically
+
+
