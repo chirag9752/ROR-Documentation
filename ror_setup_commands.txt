@@ -1,23 +1,367 @@
-->cd /home/username/projects   # go inside your project directory
+# ->cd /home/username/projects   # go inside your project directory
 
-->rails new my-rails-app      # for making new rails app
-
-
-->cd my-rails-app             # navigate to project direcotry
+# ->rails new my-rails-app      # for making new rails app
 
 
-->Set Up the Database
-
-# Configure your database settings in 
-# config/database.yml if needed.
-
-# Create and migrate the database
-
-rails db:create
-rails db:migrate
+# ->cd my-rails-app             # navigate to project direcotry
 
 
--> start rails server 
-rails server   # threw this commmand rails server start automatically
+# ->Set Up the Database
 
+# # Configure your database settings in 
+# # config/database.yml if needed.
+
+# # Create and migrate the database
+
+# rails db:create
+# rails db:migrate
+
+
+# -> start rails server 
+# rails server   # threw this commmand rails server start automatically
+
+
+# rails generate controller pages           # threw this generate pages_controller.rb inside controller and pages folder inside view
+
+
+# #  scaffold
+
+
+# rails generate scaffold Article title:string description:text         #Scaffold generator command to
+# #  create an article model (with two attributes), articles controller, views for articles and migration
+# #   file to create articles table:
+
+
+
+# # In Ruby on Rails, scaffolding is a quick way to generate the basic CRUD 
+# # (Create, Read, Update, Delete) operations and views for a resource. When you use the rails 
+# # generate scaffold command, Rails creates a full set of files and code to manage a resource, 
+# # including the following scaffold actions:
+
+# Scaffold Actions Explained
+# Index
+
+# # Method: GET
+# # Path: /resources
+# # Controller Action: index
+# # Description: Displays a list of all records for the resource. The index action retrieves all 
+# # records from the database and renders a view that typically shows these records in a table format.
+# Example: For an Article resource, this would render a list of all articles.
+
+# Show
+
+# # Method: GET
+# # Path: /resources/:id
+# # Controller Action: show
+# # Description: Shows the details of a single record identified by its ID. The show action fetches 
+# # a specific record from the database based on the provided ID and renders a view that displays 
+# # the details of that record.
+# Example: For an Article resource, this would display the details of a single article with a specific ID.
+
+# New
+
+# Method: GET
+# Path: /resources/new
+# Controller Action: new
+# # Description: Renders a form for creating a new record. The new action initializes a new instance 
+# # of the resource and renders a form for user input. This form is typically used to gather the data 
+# # needed to create a new reecord.
+# Example: For an Article resource, this would render a form where users can enter details for a new article.
+
+# Create
+
+# # Method: POST
+# # Path: /resources
+# # # Controller Action: create
+# # Description: Processes the form submission from the new action and saves the new record to the 
+# # database. The create action takes the data submitted from the form, attempts to save it as a new 
+# # record, and then redirects to the show or index action based on whether the save was successful.
+# Example: For an Article resource, this action takes the article details submitted from the new form and saves them to the database.
+
+# Edit
+
+# # Method: GET
+# # Path: /resources/:id/edit
+# # Controller Action: edit
+# # Description: Renders a form for editing an existing record. The edit action retrieves the 
+# # record identified by its ID and provides a form pre-filled with the record’s current data for 
+# # modification.
+# Example: For an Article resource, this would render a form with the existing article details pre-filled, allowing users to update the article.
+
+# Update
+
+# # Method: PATCH or PUT
+# # Path: /resources/:id
+# # Controller Action: update
+# # Description: Processes the form submission from the edit action and updates the existing record in the database. The update action takes the modified data from the form, attempts to update the record, and then redirects to the show or index action based on whether the update was successful.
+# Example: For an Article resource, this action takes the updated article details submitted from the 
+# edit form and updates the article in the database.
+
+# Destroy
+
+# # Method: DELETE
+# # Path: /resources/:id
+# # Controller Action: destroy
+# # Description: Deletes a specific record identified by its ID from the database. 
+# The destroy action removes the record and then redirects to the index action or another page.
+# Example: For an Article resource, this action would delete the specified article from the database 
+# and then redirect to the list of all articles.
+
+# # Summary
+# # Scaffolding in Rails provides a set of default actions (index, show, new, create, edit, update, 
+# #   destroy) that you can use to quickly build a CRUD interface for a resource. These actions cover
+# #    the basic operations you need to interact with a resource, allowing you to manage records with
+# #     minimal manual coding. Scaffolding is particularly useful for getting a quick start and 
+# #     understanding how Rails handles CRUD operations.
+
+
+
+
+
+
+
+
+
+
+
+
+# rails routes --expanded     # Command to see routes presented in a viewer-friendly way:
+
+
+
+# # Migrations ******************************************************************************************
+
+# Migrations in Ruby on Rails are like a way to manage and change your database's structure over time.
+#  Think of them as a set of instructions or steps to update your database schema.
+
+# # # Basic Concept
+
+# # Database Schema: 
+# This is like the blueprint of your database.It defines what tables you have and
+#  what columns each table contains.
+
+# # Migration:
+#  It’s a file that contains a set of instructions to modify your database schema.
+#  It tells the database to create new tables, add columns, or change existing ones.
+
+
+# # How Migrations Work
+# # Create a Migration:
+#  When you want to make a change to your database (like adding a new column),
+#  you create a migration. This is like writing a new instruction manual.
+
+# # Run the Migration: 
+# You apply the changes to your database by running the migration.
+#  This is like following the instructions in the manual to update the database.
+
+# # Version Control:
+#  Each migration has a version number and description.
+#  This helps keep track of changes and makes it easy to update your database schema step-by-step.
+
+
+# #  NOTE:
+# rails will only run migration file which not run that have not been run already
+
+# rails generate migration create_articles   # generally used to generate or create migration
+# rails db:migrate  # used to run the migration file in order to create the table
+# rails db:rollback # used to undo the last migration
+
+# # Note:
+# when you create db schema threw migration and you want to add column in db so don't go for rollback
+# instead create a new migration like add_title_to_articles like that and add column in it and after
+# that run rails db:migrate threw which column add on a db table we can say
+
+# class AddDescriptionToArticle < ActiveRecord::Migration[7.1]
+#   def change
+#     add_column :articles, :description, :text
+#   end
+# end
+
+# # after that db:migrate
+
+
+# # so you can see in schema.rb already descrption column added
+
+# ActiveRecord::Schema[7.1].define(version: 2024_08_26_182054) do
+#   create_table "articles", force: :cascade do |t|
+#     t.string "title"
+#     t.datetime "created_at"
+#     t.datetime "updated_at"
+#     t.text "description"
+#   end
+
+# # end
+
+
+
+# # naming conventions
+
+# # Details
+# Model name: article
+
+# Class name: Article -> Capitalized A and singular, CamelCase
+
+# File name: article.rb -> singular and all lowercase, snake_case
+
+# Table name: articles -> plural of model name and all lowercase
+
+# # Additional example:
+
+# Model name: user
+
+# Class name: User -> Capitalized U and singular, CamelCase
+
+# File name: user.rb -> singular and all lowercase, snake_case
+
+# Table name: users -> plural of model name
+
+
+
+
+# # Models
+
+# class Article < ApplicationRecord
+# end
+
+
+# # this model gives us getters and setters so we can actually
+# # work with individual articles and their title and description
+# # and the tool we are going to do this communication is [rails console ]
+
+# # rails console    # to go inside console to interact with db table
+
+# Article.all      -> to show all records of article table
+# Article.create(title: "first article", description: "first description")
+
+
+# article = Article.new
+# article
+# # #<Article:0x00007f524657e4d8
+# # id: nil,
+# # title: nil,
+# # created_at: nil,
+# # updated_at: nil,
+# # description: nil>
+
+# article.title = "second article"
+# => "second article"
+
+# article.description = "second description"
+# => "second description"
+
+# article
+
+
+# # #<Article:0x00007f524657e4d8
+# # id: nil,
+# # title: "second article",
+# # created_at: nil,
+# # updated_at: nil,
+# # description: "second description">
+
+# article.save
+
+# irb(main):010> Article.all
+# #   Article Load (0.2ms)  SELECT "articles".* FROM "articles" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+# # => 
+# # [#<Article:0x00007f524657d358
+# #   id: 1,
+# #   title: "first article",
+# #   created_at:
+# #    Mon, 26 Aug 2024 19:16:22.580309000 UTC +00:00,
+# #   updated_at:
+# #    Mon, 26 Aug 2024 19:16:22.580309000 UTC +00:00,
+# #   description: "description of first article">,
+# #  #<Article:0x00007f524657d218
+# #   id: 2,
+# #   title: "second article",
+# #   created_at:
+# #    Mon, 26 Aug 2024 19:19:50.094251000 UTC +00:00,
+# #   updated_at:
+# #    Mon, 26 Aug 2024 19:19:50.094251000 UTC +00:00,
+# #   description: "second description">]
+# # irb(main):011> article
+# # => 
+# # #<Article:0x00007f524657e4d8
+# #  id: 2,
+# #  title: "second article",
+# #  created_at: Mon, 26 Aug 2024 19:19:50.094251000 UTC +00:00,
+# #  updated_at: Mon, 26 Aug 2024 19:19:50.094251000 UTC +00:00,
+# #  description: "second description">
+
+
+
+# article = Article.new(title: "third article", description: "third description")
+# article.save
+
+
+# irb(main):015> Article.all
+# #   Article Load (0.2ms)  SELECT "articles".* FROM "articles" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+# # => 
+# # [#<Article:0x00007f524657b698
+# #   id: 1,
+# #   title: "first article",
+# #   created_at:
+# #    Mon, 26 Aug 2024 19:16:22.580309000 UTC +00:00,
+# #   updated_at:
+# #    Mon, 26 Aug 2024 19:16:22.580309000 UTC +00:00,
+# #   description: "description of first article">,
+# #  #<Article:0x00007f524657b558
+# #   id: 2,
+# #   title: "second article",
+# #   created_at:
+# #    Mon, 26 Aug 2024 19:19:50.094251000 UTC +00:00,
+# #   updated_at:
+# #    Mon, 26 Aug 2024 19:19:50.094251000 UTC +00:00,
+# #   description: "second description">,
+# #  #<Article:0x00007f524657b418
+# #   id: 3,
+# #   title: "third article",
+# #   created_at:
+# #    Mon, 26 Aug 2024 19:21:30.842985000 UTC +00:00,
+# #   updated_at:
+# #    Mon, 26 Aug 2024 19:21:30.842985000 UTC +00:00,
+# #   description: "third description">]
+# # irb(main):016> 
+# # irb(main):017> 
+# # irb(main):018> 
+
+
+# irb(main):019> Article.all
+# #   Article Load (0.1ms)  SELECT "articles".* FROM "articles" /* loading for pp */ LIMIT ?  [["LIMIT", 11]]
+# # => 
+# # [#<Article:0x00007f5246572a98
+# #   id: 1,
+# #   title: "first article",
+# #   created_at:
+# #    Mon, 26 Aug 2024 19:16:22.580309000 UTC +00:00,
+# #   updated_at:
+# #    Mon, 26 Aug 2024 19:16:22.580309000 UTC +00:00,
+# #   description: "description of first article">,
+# #  #<Article:0x00007f5246572958
+# #   id: 2,
+# #   title: "second article",
+# #   created_at:
+# #    Mon, 26 Aug 2024 19:19:50.094251000 UTC +00:00,
+# #   updated_at:
+# #    Mon, 26 Aug 2024 19:19:50.094251000 UTC +00:00,
+# #   description: "second description">,
+# #  #<Article:0x00007f5246572818
+# #   id: 3,
+# #   title: "third article",
+# #   created_at:
+# #    Mon, 26 Aug 2024 19:21:30.842985000 UTC +00:00,
+# #   updated_at:
+# #    Mon, 26 Aug 2024 19:21:30.842985000 UTC +00:00,
+# #   description: "third description">]
+
+
+# # exit       # exit used to exit from console which is used to connect to db
+
+
+
+
+# # validations ******************************************************************************************
+
+# Active Record Validations  # search on google you got everything
 
